@@ -1,0 +1,22 @@
+body.brutalist {
+    font-family: 'Noto Sans', sans-serif;
+    background: #f5f3e8;
+    color: #333;
+    margin: 0;
+  }
+  .fixed-menu {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 20px;
+    background: rgba(245, 243, 232, 0.9);
+  }
+  .menu-right a, .footer-nav a {
+    margin: 0 10px;
+    color: #333;
+    text-decoration: none;
+  }
+  .menu-icon { cursor: pointer; font-size: 24px; }
+  .footer { padding: 20px; text-align: center; background: #d9d7c9; }
