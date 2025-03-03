@@ -1,19 +1,7 @@
 <div class="hero">
   <h1>Welcome to Robbie Rose</h1>
-  <p>Discover exclusive collections and unique artwork.</p>
 </div>
-
 <div class="brick-layer">
   <h2>Featured</h2>
-  <div class="grid">
-    {% for product in collections.frontpage.products limit: 6 %}
-      <div class="grid-item">
-        <a href="{{ product.url }}">
-          <img src="{{ product.featured_image | img_url: 'medium' }}" alt="{{ product.title }}">
-          <h3>{{ product.title }}</h3>
-          <p>{{ product.price | money }}</p>
-        </a>
-      </div>
-    {% endfor %}
-  </div>
+  <p>Explore tiers and rankings soon...</p>
 </div>
