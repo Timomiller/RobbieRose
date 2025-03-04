@@ -1,6 +1,4 @@
 console.log('Theme loaded');
-
-// Fetch leaderboard on page load
 document.addEventListener('DOMContentLoaded', () => {
   if (window.location.pathname === '/pages/leaderboard') {
     fetch('http://localhost:3000/leaderboard/top100')

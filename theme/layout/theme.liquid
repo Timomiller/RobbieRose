@@ -4,8 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{{ shop.name }} - Robbie Rose</title>
+  <meta name="description" content="{{ page_description | escape }}">
+  <link rel="canonical" href="{{ canonical_url }}">
   {{ content_for_header }}
-  <link rel="stylesheet" href="{{ 'styles.scss' | asset_url }}">
+  {{ 'styles.scss.css' | asset_url | stylesheet_tag }}
 </head>
 <body class="brutalist">
   <nav class="fixed-menu">
@@ -14,22 +16,14 @@
       <a href="javascript:history.back()" class="back-btn">Back</a>
     </div>
     <div class="menu-right">
-      <a href="/account">Dashboard</a>
       <a href="/pages/leaderboard">Leaderboard</a>
       <span class="menu-icon">☰</span>
     </div>
   </nav>
   <main>{{ content_for_layout }}</main>
   <footer class="footer">
-    <nav class="footer-nav">
-      <a href="/">Home</a>
-      <a href="/collections/all">Collections</a>
-      <a href="/account">Dashboard</a>
-      <a href="/pages/leaderboard">Leaderboard</a>
-    </nav>
-    <p>© Sololuv LLC, San Diego, CA | <a href="mailto:contact@robbierose.com">contact@robbierose.com</a></p>
+    <p>© Sololuv LLC, San Diego, CA</p>
   </footer>
-  <script src="{{ 'scripts.js' | asset_url }}"></script>
-  <script src="{{ 'scripts.js' | asset_url }}" defer></script>
+  {{ 'scripts.js' | asset_url | script_tag }}
 </body>
 </html>
