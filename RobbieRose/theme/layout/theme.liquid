@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>{{ shop.name }}</title>
+  {{ content_for_header }}
+  <link rel="stylesheet" href="{{ 'style.css' | asset_url }}">
+  <style>
+    @font-face { font-family: 'Noto Serif'; src: url('{{ 'noto-serif.woff' | asset_url }}'); }
+    @font-face { font-family: 'Noto Sans'; src: url('{{ 'noto-sans.woff' | asset_url }}'); }
+    body {
+      font-family: 'Noto Sans', sans-serif;
+      background: linear-gradient(rgba(253, 252, 250, 0.8), rgba(253, 252, 250, 0.8)), url('{{ settings.background_images[settings.active_background] | asset_url }}') {{ settings.background_repeat }}, url('{{ 'grid-pattern.png' | asset_url }}') repeat;
+      background-color: #FDFCFA;
+      background-blend-mode: overlay;
+      color: #1C2526;
+      position: relative;
+    }
+    body::after {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: url('{{ 'noise-texture.png' | asset_url }}');
+      opacity: 0.05;
+    }
+    h1, h2, h3 { font-family: 'Noto Serif', serif; font-weight: 700; animation: fadeIn 1s ease-in; }
+    h1 { font-size: 3rem; }
+    h2 { font-size: 2rem; }
+    p { font-size: 1rem; font-weight: 400; }
+    .glass-effect { background: linear-gradient(135deg, rgba(253, 252, 250, 0.1), rgba(51, 51, 51, 0.1)); backdrop-filter: blur(5px); box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); }
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+  </style>
+</head>
+<body>
+  {% include 'navigation' %}
+  {% include 'websocket' %}
+  {{ content_for_layout }}
+  <footer class="glass-effect">
+    <div class="footer-links">
+      <a href="/">Home</a>
+      <a href="/collections">Collections</a>
+      <a href="/pages/background">Background</a>
+      <a href="/pages/process">Process</a>
+    </div>
+    <p>© Sololuv LLC, Robbie Rose, San Diego, CA</p>
+  </footer>
+  {% if customer %}
+    <script>
+      // Use Shopify customer data instead of mock fetch
+      const userData = {
+        tier: '{{ customer.tags | split: ',' | where: 'tier' | first | split: ':' | last | default: 'Lovers' }}',
+        shopifyId: '{{ customer.id }}'
+      };
+      if (userData.tier !== 'Echelon' && window.location.pathname === '/pages/masterworks-hidden') {
+        document.body.innerHTML = '<p>Restricted to Echelon tier</p>';
+      }
+    </script>
+  {% endif %}
+</body>
+</html>

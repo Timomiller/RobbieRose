@@ -1,0 +1,38 @@
+<div id="leaderboard" class="glass-effect">
+  <h2>Leaderboard</h2>
+  <div class="leaderboard-data" id="leaderboard-data"></div>
+  <script>
+    fetch('http://localhost:3000/api/leaderboard', { headers: { 'Authorization': 'Bearer mock-token' } })
+      .then(res => res.json())
+      .then(data => {
+        const leaderboard = document.querySelector('#leaderboard-data');
+        leaderboard.innerHTML = data.top100.map(user => `
+          <div style="color: ${user.rank <= 10 ? '#FFD700' : '#D2B48C'}">
+            ${user.rank}: ${user.username} - ${user.points}
+          </div>
+        `).join('');
+        if (data.rank === 1) new Audio('{{ 'vainqueur.wav' | asset_url }}').play();
+        else if (data.rank <= 3) new Audio('{{ 'success.wav' | asset_url }}').play();
+      });
+    let touchStartX = 0;
+    document.querySelector('#leaderboard-data').addEventListener('touchstart', e => touchStartX = e.touches[0].clientX);
+    document.querySelector('#leaderboard-data').addEventListener('touchmove', e => {
+      const touchX = e.touches[0].clientX;
+      leaderboard.scrollLeft += touchStartX - touchX;
+      touchStartX = touchX;
+    });
+  </script>
+</div>
+<style>
+#leaderboard { padding: 20px; background: rgba(253, 252, 250, 0.05); border: 1px solid #333333; }
+  .leaderboard-data { overflow-x: auto; white-space: nowrap; }
+  .leaderboard-data div {
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    padding: 5px;
+  }
+  .leaderboard-data div:hover { transform: scale(1.05); opacity: 0.9; }
+  @media (max-width: 768px) {
+    .leaderboard-data { font-size: 14px; padding: 10px; }
+    #leaderboard { padding: 10px; }
+  }
+</style>

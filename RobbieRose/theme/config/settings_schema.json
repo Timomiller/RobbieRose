@@ -1,0 +1,58 @@
+[
+    {
+        "name": "Theme Settings",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "background_images",
+            "label": "Background Images",
+            "multiple": true,
+            "info": "Upload multiple backgrounds for dynamic selection"
+          },
+          {
+            "type": "select",
+            "id": "active_background",
+            "label": "Active Background",
+            "options": [
+              { "value": "0", "label": "First Image" },
+              { "value": "1", "label": "Second Image" },
+              { "value": "2", "label": "Third Image" }
+            ],
+            "default": "0"
+          },
+          {
+            "type": "select",
+            "id": "background_repeat",
+            "label": "Background Repeat",
+            "options": [
+              { "value": "no-repeat", "label": "No Repeat" },
+              { "value": "repeat", "label": "Repeat" }
+            ],
+            "default": "no-repeat"
+          },
+        {
+          "type": "checkbox",
+          "id": "show_tier_progress",
+          "label": "Show Tier Progress",
+          "default": true
+        },
+        {
+          "type": "select",
+          "id": "featured_type",
+          "label": "Featured Section Type",
+          "options": [
+            { "value": "product", "label": "Product" },
+            { "value": "collection", "label": "Collection" },
+            { "value": "article", "label": "Article" }
+          ],
+          "default": "product"
+        },
+        {
+          "type": "text",
+          "id": "featured_id",
+          "label": "Featured Item ID",
+          "default": "mock-product-1"
+        }
+      ]
+    }
+  ]

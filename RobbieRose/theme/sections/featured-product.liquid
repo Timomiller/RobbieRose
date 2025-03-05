@@ -1,0 +1,41 @@
+<div class="featured-section">
+  {% if settings.featured_type == 'product' %}
+    <h2>Featured Product</h2>
+    <img src="{{ 'background-texture.png' | asset_url }}">
+    <p>Mock Product</p>
+    <a href="#" class="cta">Shop Now</a>
+  {% elsif settings.featured_type == 'collection' %}
+    <h2>Featured Collection</h2>
+    <img src="{{ 'background-gradient.png' | asset_url }}">
+    <p>Mock Collection</p>
+    <a href="#" class="cta">Explore</a>
+  {% else %}
+    <h2>Featured Article</h2>
+    <p>Lorem ipsum dolor sit amet...</p>
+    <a href="#" class="cta">Read More</a>
+  {% endif %}
+</div>
+<style>
+  .featured-section {
+    text-align: center;
+    padding: 20px;
+    background: rgba(253, 252, 250, 0.1);
+    border: 1px solid #333333;
+    transition: background 0.3s ease;
+  }
+  .featured-section:hover {
+    background: rgba(253, 252, 250, 0.15);
+  }
+  .cta {
+    display: inline-block;
+    padding: 10px 20px;
+    background: #D2B48C;
+    color: #1C2526;
+    text-decoration: none;
+    transition: background 0.3s ease;
+  }
+  .cta:hover { background: #333333; }
+  @media (max-width: 768px) {
+    .featured-section { padding: 10px; }
+  }
+</style>

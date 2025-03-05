@@ -1,0 +1,36 @@
+<div class="bricklayer-grid">
+  <div class="grid-item"><h3>Product 1</h3><img src="{{ 'background-texture.png' | asset_url }}"></div>
+  <div class="grid-item"><h3>Article 1</h3><p>Lorem ipsum...</p></div>
+  <div class="grid-item"><h3>Collection 1</h3><img src="{{ 'background-gradient.png' | asset_url }}"></div>
+</div>
+<style>
+  .bricklayer-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    padding: 20px;
+    background: rgba(253, 252, 250, 0.2); /* Bone white overlay */
+    border: 1px solid #333333; /* Charcoal edge */
+    transition: background 0.3s ease, background-position 0.5s ease; /* Merged transitions */
+    background-position: center; /* Base position for parallax */
+  }
+  .bricklayer-grid:hover {
+    background: rgba(253, 252, 250, 0.25); /* Subtle hover effect */
+    background-position: center 10px; /* Parallax shift on hover */
+  }
+.grid-item {
+  background: linear-gradient(rgba(253, 252, 250, 0.2), rgba(51, 51, 51, 0.05));
+  padding: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease;
+}
+  .grid-item:hover {
+    transform: translateY(-5px); /* Lift effect */
+  }
+  @media (max-width: 768px) {
+    .bricklayer-grid {
+      grid-template-columns: 1fr; /* Stack on mobile */
+      padding: 10px;
+    }
+  }
+</style>

@@ -1,0 +1,25 @@
+<nav class="navigation glass-effect">
+  <div class="nav-icon" onclick="toggleNav()">☰</div>
+  <div class="nav-panel" id="nav-panel">
+    <a href="/">Home</a>
+    <a href="/collections">Collections</a>
+    {% include 'notifications' %}
+    <a href="/cart">Cart (<span id="cart-count">{{ cart.item_count }}</span>)</a>
+    {% if customer %}
+      <a href="/account">Profile</a>
+      <a href="/wishlist">Wishlist</a>
+    {% else %}
+      <a href="/account/login">Login</a>
+    {% endif %}
+  </div>
+</nav>
+<style>
+  .navigation { position: fixed; top: 0; right: 0; }
+  .nav-panel { display: none; }
+  .nav-panel.open { display: block; padding: 20px; }
+</style>
+<script>
+  function toggleNav() {
+    document.getElementById('nav-panel').classList.toggle('open');
+  }
+</script>

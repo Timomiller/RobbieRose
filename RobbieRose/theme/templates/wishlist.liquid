@@ -1,0 +1,15 @@
+<!-- /shopify-theme/templates/wishlist.liquid -->
+<div class="wishlist-page glass-effect">
+  <h1>Wishlist</h1>
+  <ul id="wishlist-items"></ul>
+  <script>
+    fetch('http://localhost:3000/api/users/me', { headers: { 'Authorization': 'Bearer mock-token' } })
+      .then(res => res.json())
+      .then(data => {
+        document.querySelector('#wishlist-items').innerHTML = data.wishlist.map(item => `<li>${item}</li>`).join('');
+      });
+  </script>
+</div>
+<style>
+  .wishlist-page { padding: 20px; color: #1C2526; background: #F8F1E9; }
+</style>

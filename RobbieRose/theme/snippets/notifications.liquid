@@ -1,0 +1,15 @@
+<!-- /shopify-theme/snippets/notifications.liquid -->
+<div class="notifications glass-effect">
+  <h3>Notifications</h3>
+  <div id="notification-log"></div>
+  <script>
+    socket.on('notification', (data) => {
+      document.querySelector('#notification-log').innerHTML += `<p>${data.message}</p>`;
+      new Audio('{{ 'index.wav' | asset_url }}').play();
+    });
+  </script>
+</div>
+<style>
+  .notifications { padding: 10px; }
+  .notifications p { color: #1C2526; margin: 5px 0; } /* Monotone dark near black */
+</style>

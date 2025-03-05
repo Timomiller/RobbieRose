@@ -1,0 +1,17 @@
+<div class="tier-progress glass-effect">
+  <h3>Tier Progress</h3>
+  <div class="tier-status" data-user-id="mock-user-1">Lovers</div>
+  <div class="progress-bar" style="width: 20%;"></div>
+</div>
+<style>
+  .tier-progress { padding: 20px; background: rgba(253, 252, 250, 0.05); }
+  .progress-bar {
+    height: 10px;
+    background: #D2B48C;
+    transition: width 0.5s ease-in-out, background 0.3s ease;
+  }
+  .progress-bar:hover { background: #1C2526; }
+  @media (max-width: 768px) {
+    .tier-progress { padding: 10px; }
+  }
+</style>

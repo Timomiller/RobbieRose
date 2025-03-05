@@ -1,0 +1,24 @@
+<!-- /snippets/websocket.liquid -->
+<script src="https://cdn.socket.io/4.5.0/socket.io.min.js"></script>
+<script>
+  const socket = io('http://localhost:3000');
+  socket.on('connect', () => console.log('Connected to API'));
+  socket.on('leaderboardUpdate', (data) => {
+    document.querySelectorAll('.leaderboard-data').forEach(el => {
+      el.innerHTML = data.top100.map(user => `
+        <div style="color: ${user.rank <= 10 ? '#FFD700' : '#D2B48C'}">
+          ${user.rank}: ${user.username} - ${user.points}
+        </div>
+      `).join('');
+    });
+  });
+  socket.on('tierUpdate', (data) => {
+    document.querySelectorAll('.tier-status').forEach(el => {
+      if (el.dataset.userId === data.userId) el.textContent = data.tier;
+    });
+  });
+  socket.on('notification', (data) => {
+    document.querySelector('#notification-log').innerHTML += `<p>${data.message}</p>`;
+    new Audio('{{ 'index.wav' | asset_url }}').play();
+  });
+</script>

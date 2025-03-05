@@ -1,0 +1,16 @@
+<div class="product-page">
+  <h1>Mock Product</h1>
+  <img src="{{ 'background-texture.png' | asset_url }}">
+  <p>Price: $100</p>
+  <button onclick="addToCart()">Add to Cart</button>
+  <script>
+    function addToCart() {
+      fetch('http://localhost:3000/api/users/add-points', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer mock-token' },
+        body: JSON.stringify({ shopifyId: 'mock-user-1', points: 50 })
+      });
+      document.querySelector('#cart-count').textContent = parseInt(document.querySelector('#cart-count').textContent) + 1;
+    }
+  </script>
+</div>

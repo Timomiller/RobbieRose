@@ -1,0 +1,39 @@
+<div class="landing-page">
+  <h1>Welcome to Robbie Rose</h1>
+  {% section 'featured-product' %}
+  {% section 'bricklayer-grid' %}
+</div>
+<div class="landing-page">
+  <div class="hero" style="background: url('{{ 'background-gradient.png' | asset_url }}') no-repeat center; background-size: cover;">
+    <h1>Welcome to Robbie Rose</h1>
+  </div>
+  {% section 'featured-product' %}
+  {% section 'bricklayer-grid' %}
+</div>
+<script>
+  window.addEventListener('scroll', () => {
+    const hero = document.querySelector('.hero');
+    const scrollPosition = window.scrollY;
+    hero.style.backgroundPositionY = `${scrollPosition * 0.5}px`;
+  });
+</script>
+<style>
+  .hero { height: 50vh; position: relative; }
+</style>
+<!-- /layout/theme.liquid (style update) -->
+<style>
+  body {
+    background: linear-gradient(rgba(253, 252, 250, 0.8), rgba(253, 252, 250, 0.8)), url('{{ settings.background_images[settings.active_background] | asset_url }}') {{ settings.background_repeat }};
+    background-color: #FDFCFA; /* Truer bone white */
+    background-blend-mode: overlay;
+    color: #1C2526;
+    position: relative;
+  }
+  body::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: url('{{ 'noise-texture.png' | asset_url }}');
+    opacity: 0.05;
+  }
+</style>

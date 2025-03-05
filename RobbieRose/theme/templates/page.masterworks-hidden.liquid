@@ -1,0 +1,42 @@
+<!-- /shopify-theme/templates/page.masterworks-hidden.liquid -->
+<div class="masterworks-page glass-effect">
+  <h1 style="border-bottom: 2px solid #FFD700;">Masterworks</h1>
+  <p>Exclusive Echelon content</p>
+  <script>
+    // Mock Data Note: Replace 'mock-token' with Shopify OAuth token in Phase 2
+    fetch('http://localhost:3000/api/users/me', { headers: { 'Authorization': 'Bearer mock-token' } })
+      .then(res => res.json())
+      .then(data => {
+        if (data.tier !== 'Echelon') {
+          document.body.innerHTML = '<p>Restricted to Echelon tier</p>';
+        }
+      });
+  </script>
+</div>
+<style>
+  .masterworks-page {
+    padding: 20px;
+    color: #1C2526;
+    background: rgba(253, 252, 250, 0.1); /* Consistent bone white overlay */
+    animation: fadeIn 1s ease-in; /* Added for consistency */
+  }
+  /* Leverage .glass-effect from /layout/theme.liquid for gradient and shadow */
+  h1 {
+    font-family: 'Noto Serif', serif;
+    font-weight: 700;
+    font-size: 3rem;
+    transition: color 0.3s ease;
+  }
+  h1 {
+  border-bottom: 2px solid #FFD700;
+  animation: pulse 2s infinite;
+}
+@keyframes pulse { 0%, 100% { border-color: #FFD700; } 50% { border-color: #D2B48C; } }
+  h1:hover {
+    color: #D2B48C; /* Tan hover effect for interactivity */
+  }
+  @media (max-width: 768px) {
+    .masterworks-page { padding: 10px; }
+    h1 { font-size: 2rem; }
+  }
+</style>
